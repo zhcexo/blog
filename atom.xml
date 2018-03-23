@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zhcexo&#39;s blog</title>
+  
+  <subtitle>yet another fe blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://zhcexo.com/"/>
+  <updated>2018-03-23T03:10:47.347Z</updated>
+  <id>http://zhcexo.com/</id>
+  
+  <author>
+    <name>zhcexo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用 git 命令备忘</title>
+    <link href="http://zhcexo.com/2018/03/23/git-cheat-sheet/"/>
+    <id>http://zhcexo.com/2018/03/23/git-cheat-sheet/</id>
+    <published>2018-03-23T03:02:43.000Z</published>
+    <updated>2018-03-23T03:10:47.347Z</updated>
+    
+    <content type="html"><![CDATA[<p>导出项目文件</p><p><code>git archive --format zip -o filename.zip HEAD</code></p><p>修剪远程分支</p><p><code>git remote prune origin</code></p><p>显示本地分支与远程分支跟踪关系</p><p><code>git branch -vv</code></p><p>重命名本地分支</p><p><code>git branch -m oldname newname</code></p><p>本地分支与远程分支建立关系</p><p><code>git branch --set-upstream-to=origin/&lt;branch&gt; &lt;cur branch&gt;</code></p><p>强制覆盖本地文件的修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br><span class="line">git reset --hard origin/master 或</span><br><span class="line">git reset --hard origin/develop 依此类推，使用想用的分支</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;导出项目文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git archive --format zip -o filename.zip HEAD&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;修剪远程分支&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git remote prune origin&lt;/code&gt;&lt;/p&gt;
+&lt;p
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://zhcexo.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 PhpStorm 中集成 git bash</title>
+    <link href="http://zhcexo.com/2018/03/23/phpstorm-with-git-bash/"/>
+    <id>http://zhcexo.com/2018/03/23/phpstorm-with-git-bash/</id>
+    <published>2018-03-23T02:52:49.118Z</published>
+    <updated>2018-03-23T02:52:49.119Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接看图，注意后面的参数 <code>-login -i</code> 不能反了。</p><p><img src="http://of723n9da.bkt.clouddn.com/2016-10-17_220547.jpg" alt="git bash in phpstorm"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;直接看图，注意后面的参数 &lt;code&gt;-login -i&lt;/code&gt; 不能反了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://of723n9da.bkt.clouddn.com/2016-10-17_220547.jpg&quot; alt=&quot;git bash in phpst
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="http://zhcexo.com/tags/Tools/"/>
+    
+  </entry>
+  
+</feed>
