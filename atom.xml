@@ -45,10 +45,10 @@
   
   <entry>
     <title>在 PhpStorm 中集成 git bash</title>
-    <link href="http://zhcexo.com/2018/03/23/phpstorm-with-git-bash/"/>
-    <id>http://zhcexo.com/2018/03/23/phpstorm-with-git-bash/</id>
-    <published>2018-03-23T02:52:49.118Z</published>
-    <updated>2018-03-23T02:52:49.119Z</updated>
+    <link href="http://zhcexo.com/2018/03/22/phpstorm-with-git-bash/"/>
+    <id>http://zhcexo.com/2018/03/22/phpstorm-with-git-bash/</id>
+    <published>2018-03-22T10:12:34.000Z</published>
+    <updated>2018-03-23T03:33:09.172Z</updated>
     
     <content type="html"><![CDATA[<p>直接看图，注意后面的参数 <code>-login -i</code> 不能反了。</p><p><img src="http://of723n9da.bkt.clouddn.com/2016-10-17_220547.jpg" alt="git bash in phpstorm"></p>]]></content>
     
