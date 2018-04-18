@@ -310,6 +310,31 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >
+                
+                    <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
+            </a>
+            <div class="abstract-content">
+                遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
+问题表现各自用 webpack 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。
+解决方法在 webpack 的配置选项里使用 output.jsonpFunction。
+看一下文档里说的：
+
+output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 Comm...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
+                </div>
+                <!-- tags  -->
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/03/23/git-cheat-sheet/" >
                 
                     <span>常用 git 命令备忘</span>
@@ -461,7 +486,16 @@ git branch --set-upstream-to=origin/&lt;branch&gt; &lt;cur branch&gt;
     
     
     
-    <div class="total-archive"> Total : 2 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 3 </div>
     
     <div class="post-archive">
     
@@ -470,6 +504,11 @@ git branch --set-upstream-to=origin/&lt;branch&gt; &lt;cur branch&gt;
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >同一页面运行wepback不同实例出现冲突的解决办法</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -486,9 +525,9 @@ git branch --set-upstream-to=origin/&lt;branch&gt; &lt;cur branch&gt;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
         <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

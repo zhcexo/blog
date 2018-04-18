@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhcexo.com/"/>
-  <updated>2018-03-23T03:10:47.347Z</updated>
+  <updated>2018-04-18T03:23:44.436Z</updated>
   <id>http://zhcexo.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>同一页面运行wepback不同实例出现冲突的解决办法</title>
+    <link href="http://zhcexo.com/2018/04/18/webpack-multiple-instance-on-the-same-page/"/>
+    <id>http://zhcexo.com/2018/04/18/webpack-multiple-instance-on-the-same-page/</id>
+    <published>2018-04-18T03:03:00.000Z</published>
+    <updated>2018-04-18T03:23:44.436Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>对于同一个页面功能由不同的同事开发，都用到了 <code>webpack</code> 以及 <code>CommonsChunkPlugin</code>，最后把打包出来的代码，整合到一起的时候，冲突了。</p><h3 id="问题表现"><a href="#问题表现" class="headerlink" title="问题表现"></a>问题表现</h3><p>各自用 <code>webpack</code> 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。</p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在 <code>webpack</code> 的配置选项里使用 <code>output.jsonpFunction</code>。</p><p>看一下文档里说的：</p><blockquote><p>output.jsonpFunction<br><code>string</code><br>仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。<br>一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 CommonsChunkPlugin, AggressiveSplittingPlugin）。<br>当同一个页面上有多个 webpack 实例（源于不同的编译），需要修改这个函数名。<br>如果使用了 <code>output.library</code> 选项，那么这个 <code>library</code> 的命名会自动附加上。</p></blockquote><p>事实上 webpack 并不在全局命名空间下运行，但是 <code>CommonsChunkPlugin</code> 这样的插件会使用异步 JSONP 的方法按需加载代码块。插件会注册一个全局的函数叫 <code>window.webpackJsonp</code>，所以同一个页面上运行多个源自不同 webpack 打包出来的代码时，可能会引起冲突。</p><h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://webpack.js.org/configuration/output/#output-jsonpfunction" target="_blank" rel="noopener">webpack - configuration - output - jsonpfunction</a></p><p><a href="https://medium.com/@cliffers/how-to-run-multiple-webpack-instances-on-the-same-page-and-avoid-any-conflicts-4e2fe0f016d1" target="_blank" rel="noopener">How to run multiple webpack instances on the same page…and avoid any conflicts</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;遇到的问题&quot;&gt;&lt;a href=&quot;#遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题&quot;&gt;&lt;/a&gt;遇到的问题&lt;/h3&gt;&lt;p&gt;对于同一个页面功能由不同的同事开发，都用到了 &lt;code&gt;webpack&lt;/code&gt; 以及 &lt;code&gt;Commo
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>常用 git 命令备忘</title>
