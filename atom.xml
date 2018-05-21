@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhcexo.com/"/>
-  <updated>2018-04-18T03:23:44.436Z</updated>
+  <updated>2018-05-21T02:11:44.133Z</updated>
   <id>http://zhcexo.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 VSCODE 中安装 Go 语言相关支持</title>
+    <link href="http://zhcexo.com/2018/05/21/go-tools-in-vscode/"/>
+    <id>http://zhcexo.com/2018/05/21/go-tools-in-vscode/</id>
+    <published>2018-05-21T01:58:03.000Z</published>
+    <updated>2018-05-21T02:11:44.133Z</updated>
+    
+    <content type="html"><![CDATA[<p>写好 Go 文件，用 VSCode 打开之后，右下角会提示缺少 Go 相关的支持，然后会有两个按钮 <code>Install</code> 和 <code>Show</code>。<code>Install</code> 是自动安装这些支持，<code>Show</code> 是显示缺了些什么。但实际情况是，点了 <code>Install</code> 之后，控制台一堆报错并且安装失败。</p><p>点击 <code>Install</code> 或者 <code>Show</code>，控制台里已经显示缺少如下工具：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">github.com/ramya-rao-a/go-outline</span><br><span class="line">github.com/acroca/go-symbols</span><br><span class="line">golang.org/x/tools/cmd/guru</span><br><span class="line">golang.org/x/tools/cmd/gorename</span><br><span class="line">github.com/rogpeppe/godef</span><br><span class="line">github.com/sqs/goreturns</span><br><span class="line">github.com/golang/lint/golint</span><br><span class="line">github.com/derekparker/delve/cmd/dlv</span><br></pre></td></tr></table></figure><p>然后用 <code>go install</code> 或者 <code>go get -v</code> 都安装不成功。</p><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ol><li>打开 Go 的安装目录</li><li>进入安装目录下的 <code>src</code> 目录，新建 <code>golang.org</code> 目录，在此目录下继续新建 <code>x</code> 目录</li><li>进入 <code>安装目录/golang.org/x</code> 目录，执行以下两个命令</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/golang/tools.git</span><br><span class="line">git clone https://github.com/golang/lint.git</span><br></pre></td></tr></table></figure><p>第一个安装除 <code>go-lint</code> 之外其他工具的支持，第二个安装 <code>go-lint</code> 支持。</p><p>以上步骤都处理完之后，就可以用 <code>go get ***</code> 和 <code>go install ***</code> 这种方式把缺的工具都装好。安装之后重启 VScode 即使用 Go 语言相关支持。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;写好 Go 文件，用 VSCode 打开之后，右下角会提示缺少 Go 相关的支持，然后会有两个按钮 &lt;code&gt;Install&lt;/code&gt; 和 &lt;code&gt;Show&lt;/code&gt;。&lt;code&gt;Install&lt;/code&gt; 是自动安装这些支持，&lt;code&gt;Show&lt;/cod
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://zhcexo.com/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>同一页面运行wepback不同实例出现冲突的解决办法</title>
