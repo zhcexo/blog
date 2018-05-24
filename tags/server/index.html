@@ -310,34 +310,27 @@
     
     
         <article class="index-post">
-            <a class="abstract-title" href = "/2018/03/23/git-cheat-sheet/" >
+            <a class="abstract-title" href = "/2018/05/24/ladder/" >
                 
-                    <span>常用 git 命令备忘</span>
+                    <span>记一次搭梯子的过程</span>
             </a>
             <div class="abstract-content">
-                导出项目文件
-git archive --format zip -o filename.zip HEAD
-修剪远程分支
-git remote prune origin
-显示本地分支与远程分支跟踪关系
-git branch -vv
-重命名本地分支
-git branch -m oldname newname
-本地分支与远程分支建立关系
-git branch --set-upstream-to=origin/&lt;branch&gt; &lt;cur branch&gt;
-强制覆盖本地文件的修改
-123git fetchgit reset --hard origin/master 或git ...
+                之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。
+服务器安装的是 ubuntu 18 LTS x64 版本，准备使用 55 和 kcp 当梯子。
+步骤：(以下步骤默认都是 root 下执行)1. 安装 python-pip 和 55使用两个命令即可：
+12apt-get install python-pippip install git+https://github.com/shadowsocks/shadowsocks.git@master
+执行第二个命令如果报错，例如 Import...
             </div>
             <div class="abstract-post-meta">
                 <!-- date  -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/23</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/24</span>
                 </div>
                 <!-- tags  -->
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
     
 </div>
                 

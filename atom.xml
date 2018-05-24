@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhcexo.com/"/>
-  <updated>2018-05-21T02:11:44.133Z</updated>
+  <updated>2018-05-24T09:54:42.402Z</updated>
   <id>http://zhcexo.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次搭梯子的过程</title>
+    <link href="http://zhcexo.com/2018/05/24/ladder/"/>
+    <id>http://zhcexo.com/2018/05/24/ladder/</id>
+    <published>2018-05-24T09:21:32.000Z</published>
+    <updated>2018-05-24T09:54:42.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。</p><p>服务器安装的是 <strong>ubuntu 18 LTS x64 版本</strong>，准备使用 55 和 kcp 当梯子。</p><h2 id="步骤：-以下步骤默认都是-root-下执行"><a href="#步骤：-以下步骤默认都是-root-下执行" class="headerlink" title="步骤：(以下步骤默认都是 root 下执行)"></a>步骤：(以下步骤默认都是 root 下执行)</h2><h3 id="1-安装-python-pip-和-55"><a href="#1-安装-python-pip-和-55" class="headerlink" title="1. 安装 python-pip 和 55"></a>1. 安装 python-pip 和 55</h3><p>使用两个命令即可：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br><span class="line">pip install git+https://github.com/shadowsocks/shadowsocks.git@master</span><br></pre></td></tr></table></figure><p>执行第二个命令如果报错，例如 <code>ImportError: No module named setuptools</code>，只需要再安装 setuptools 即可。</p><p>先查看自己服务器的 Python 版本：</p><blockquote><ol><li>在终端上输入 python，进入 python shell</li><li>输入 help() 查看 python 版本</li><li>查看完毕后，输入 exit() 退出 python shell</li></ol></blockquote><p>接下来安装 setuptools：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python</span><br><span class="line"><span class="meta">#</span> 或者</span><br><span class="line">wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python3.4</span><br></pre></td></tr></table></figure><h3 id="2-配置和启用-55"><a href="#2-配置和启用-55" class="headerlink" title="2. 配置和启用 55"></a>2. 配置和启用 55</h3><p>安装完之后，在 <code>/etc/</code> 目录下创建配置文件，命名为 <code>shadowsocks.json</code>：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,             <span class="comment">// your server ip goes here</span></span><br><span class="line">    <span class="string">"server_port"</span>:<span class="number">8388</span>,</span><br><span class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">"**********"</span>,        <span class="comment">// your ss password goes here</span></span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-gcm"</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>启动和停止 55 的方法是：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start      # 这是后台启动的方式</span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop       # 这是对应的停止的方式</span><br></pre></td></tr></table></figure><h3 id="3-安装-kcptun"><a href="#3-安装-kcptun" class="headerlink" title="3. 安装 kcptun"></a>3. 安装 kcptun</h3><p>直接访问项目地址吧，安装过程不说了，<a href="https://github.com/kuoruan/shell-scripts" target="_blank" rel="noopener">https://github.com/kuoruan/shell-scripts</a>。</p><p>安装过程中可能会提示 <code>iptables</code> 相关的错误，原因是 <code>iptables</code> 在 centos 和 ubuntu 上有差异。脚本似乎是针对 centos 写的，不过无所谓，脚本里面已经提示了自己去解决 <code>iptables</code> 问题，但直接按提示去解决会出错。</p><p>解决办法无外乎两步：首先添加相应规则到 <code>iptables</code>，然后重启 <code>iptables</code> 服务。</p><p>添加 <code>iptables</code> 配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p udp --dport 29900 -j ACCEPT        # 29900 换成你自己的</span><br></pre></td></tr></table></figure></p><p>保存 <code>iptables</code> 的配置（ubuntu 下）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-save</span><br></pre></td></tr></table></figure></p><p>重启 <code>iptables</code>，因为 ubuntu 用的是 <code>ufw</code> 作为 <code>iptables</code> 的前端，所以使用如下命令重启：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ufw restart</span><br></pre></td></tr></table></figure></p><h3 id="4-注意"><a href="#4-注意" class="headerlink" title="4. 注意"></a>4. 注意</h3><p>在配置 kcptun 的时候，加速的 IP 填写外网的 IP，如果填本地 IP（127.0.0.1 或者 0.0.0.0）都会出来 <code>dial tcp 127.0.0.1:8388: connect: connection refused</code> 这种错误。</p><h3 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5. 参考资料"></a>5. 参考资料</h3><p><a href="https://blog.kuoruan.com/110.html" target="_blank" rel="noopener">https://blog.kuoruan.com/110.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。&lt;/p&gt;
+&lt;p&gt;服务器安装的是 &lt;strong&gt;ubuntu 18 LTS x64 版本&lt;/strong&gt;，准备使用 55
+      
+    
+    </summary>
+    
+    
+      <category term="server" scheme="http://zhcexo.com/tags/server/"/>
+    
+  </entry>
   
   <entry>
     <title>在 VSCODE 中安装 Go 语言相关支持</title>
