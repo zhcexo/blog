@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhcexo.com/"/>
-  <updated>2018-05-24T09:54:42.402Z</updated>
+  <updated>2018-05-25T06:29:39.034Z</updated>
   <id>http://zhcexo.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Golang 中为切片 append 元素之后 cap 变化的问题</title>
+    <link href="http://zhcexo.com/2018/05/25/append-and-cap-in-golang/"/>
+    <id>http://zhcexo.com/2018/05/25/append-and-cap-in-golang/</id>
+    <published>2018-05-25T06:04:04.000Z</published>
+    <updated>2018-05-25T06:29:39.034Z</updated>
+    
+    <content type="html"><![CDATA[<p>在学习 Go 语言基础的时候，看到了 slice 切片这里，里面有个 append 方法，用于往 slice 里添加元素。代码如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> numbers []<span class="keyword">int</span></span><br><span class="line">    printSlice(numbers)</span><br><span class="line"></span><br><span class="line">    numbers = <span class="built_in">append</span>(numbers, <span class="number">0</span>)</span><br><span class="line">    printSlice(numbers)</span><br><span class="line"></span><br><span class="line">    numbers = <span class="built_in">append</span>(numbers, <span class="number">1</span>)</span><br><span class="line">    printSlice(numbers)</span><br><span class="line"></span><br><span class="line">    numbers = <span class="built_in">append</span>(numbers, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">    printSlice(numbers)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printSlice</span><span class="params">(x []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"len=%d cap=%d slice=%v\n"</span>, <span class="built_in">len</span>(x), <span class="built_in">cap</span>(x), x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>代码运行的结果是：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">len=0 cap=0 slice=[]</span><br><span class="line">len=1 cap=1 slice=[0]</span><br><span class="line">len=2 cap=2 slice=[0 1]</span><br><span class="line">len=5 cap=6 slice=[0 1 2 3 4]</span><br></pre></td></tr></table></figure><p>差一点就看看跳过了，不过最后一行的结果，<code>cap</code> 执行的结果显示，这个 <code>numbers</code> 切片的容量为 6。</p><p>如果是写其他的语言，比如 JavaScript，那么这个结果可能会跟 <code>length</code> 作类比从而产生“为什么容量不是 5”这种想法，毕竟我们只在 slice 里添加了 5 个元素。翻了一下官方的文档也没有解释，后来在 stackoverflow 上看到了别人的回答，大致总结如下：</p><blockquote><p>Go 会为你的 slice 提供比你需要的更多的容量，原因是在 slice 的底层，有个不可变动的（immutable）数组（array）在实际起作用。当你要为 slice 添加元素从而让切片的容量更大的时候，实际上是创建了一个新数组，把原来的切片元素和新添加的元素放到新的数组里，并把这个数组作为新 slice 的底层。如果你添加很多数据到 slice 里，就会反复去创建和复制这些数据，影响性能。所以运行时会分配比你期望的更多的容量到 slice，让复制数据这些操作变得不那么频繁。</p></blockquote><p>虽然原因找下来，感觉这个问题似乎不怎么重要，不过有人如果看到这里，跟我有同样的疑惑，也可以做个参照。</p><p><strong>参考资料：</strong></p><ul><li><a href="https://stackoverflow.com/questions/38573983/capacity-of-slices-in-go" target="_blank" rel="noopener">https://stackoverflow.com/questions/38573983/capacity-of-slices-in-go</a></li><li><a href="https://stackoverflow.com/questions/38543825/appending-one-element-to-nil-slice-increases-capacity-by-two" target="_blank" rel="noopener">https://stackoverflow.com/questions/38543825/appending-one-element-to-nil-slice-increases-capacity-by-two</a></li><li><a href="https://blog.csdn.net/a_flying_bird/article/details/54428546" target="_blank" rel="noopener">Go-append使用方法及注意事项</a></li><li><a href="https://blog.csdn.net/zxhoo/article/details/70159926" target="_blank" rel="noopener">Go语言小知识之append()函数</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在学习 Go 语言基础的时候，看到了 slice 切片这里，里面有个 append 方法，用于往 slice 里添加元素。代码如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s
+      
+    
+    </summary>
+    
+    
+      <category term="go" scheme="http://zhcexo.com/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次搭梯子的过程</title>
