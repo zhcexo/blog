@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>记一次搭梯子的过程 · zhcexo&#39;s blog</title>
+    <title>zhcexo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,8 +65,6 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/favicon.ico>
     <script>
@@ -187,23 +185,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >zhcexo&#39;s blog</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">记一次搭梯子的过程</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>zhcexo's blog</a>
 </header>
@@ -217,62 +204,24 @@
 
 
 
-height:50vh;
-
 >
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            记一次搭梯子的过程
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-                <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/05/24</span>
-                
-                <span class="shareWrapper">
-                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                    <span class="shareText">Share</span>
-                    <ul class="shareList">
-                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                            <div class="share-qrcode"></div>
-                        </li>
-                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                    </ul>
-                </span>
-            </div>
         
     </div>
 </div>
@@ -356,90 +305,68 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。</p>
-<p>服务器安装的是 <strong>ubuntu 18 LTS x64 版本</strong>，准备使用 55 和 kcp 当梯子。</p>
-<h2 id="步骤：-以下步骤默认都是-root-下执行"><a href="#步骤：-以下步骤默认都是-root-下执行" class="headerlink" title="步骤：(以下步骤默认都是 root 下执行)"></a>步骤：(以下步骤默认都是 root 下执行)</h2><h3 id="1-安装-python-pip-和-55"><a href="#1-安装-python-pip-和-55" class="headerlink" title="1. 安装 python-pip 和 55"></a>1. 安装 python-pip 和 55</h3><p>使用两个命令即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br><span class="line">pip install git+https://github.com/shadowsocks/shadowsocks.git@master</span><br></pre></td></tr></table></figure>
-<p>执行第二个命令如果报错，例如 <code>ImportError: No module named setuptools</code>，只需要再安装 setuptools 即可。</p>
-<p>先查看自己服务器的 Python 版本：</p>
-<blockquote>
-<ol>
-<li>在终端上输入 python，进入 python shell</li>
-<li>输入 help() 查看 python 版本</li>
-<li>查看完毕后，输入 exit() 退出 python shell</li>
-</ol>
-</blockquote>
-<p>接下来安装 setuptools：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python</span><br><span class="line"><span class="meta">#</span> 或者</span><br><span class="line">wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python3.4</span><br></pre></td></tr></table></figure>
-<h3 id="2-配置和启用-55"><a href="#2-配置和启用-55" class="headerlink" title="2. 配置和启用 55"></a>2. 配置和启用 55</h3><p>安装完之后，在 <code>/etc/</code> 目录下创建配置文件，命名为 <code>shadowsocks.json</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,             <span class="comment">// your server ip goes here</span></span><br><span class="line">    <span class="string">"server_port"</span>:<span class="number">8388</span>,</span><br><span class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">"**********"</span>,        <span class="comment">// your ss password goes here</span></span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-gcm"</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>启动和停止 55 的方法是：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start      # 这是后台启动的方式</span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop       # 这是对应的停止的方式</span><br></pre></td></tr></table></figure>
-<h3 id="3-安装-kcptun"><a href="#3-安装-kcptun" class="headerlink" title="3. 安装 kcptun"></a>3. 安装 kcptun</h3><p>直接访问项目地址吧，安装过程不说了，<a href="https://github.com/kuoruan/shell-scripts" target="_blank" rel="noopener">https://github.com/kuoruan/shell-scripts</a>。</p>
-<p>安装过程中可能会提示 <code>iptables</code> 相关的错误，原因是 <code>iptables</code> 在 centos 和 ubuntu 上有差异。脚本似乎是针对 centos 写的，不过无所谓，脚本里面已经提示了自己去解决 <code>iptables</code> 问题，但直接按提示去解决会出错。</p>
-<p>解决办法无外乎两步：首先添加相应规则到 <code>iptables</code>，然后重启 <code>iptables</code> 服务。</p>
-<p>添加 <code>iptables</code> 配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p udp --dport 29900 -j ACCEPT        # 29900 换成你自己的</span><br></pre></td></tr></table></figure></p>
-<p>保存 <code>iptables</code> 的配置（ubuntu 下）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-save</span><br></pre></td></tr></table></figure></p>
-<p>重启 <code>iptables</code>，因为 ubuntu 用的是 <code>ufw</code> 作为 <code>iptables</code> 的前端，所以使用如下命令重启：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ufw restart</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-注意"><a href="#4-注意" class="headerlink" title="4. 注意"></a>4. 注意</h3><p>在配置 kcptun 的时候，加速的 IP 填写外网的 IP，如果填本地 IP（127.0.0.1 或者 0.0.0.0）都会出来 <code>dial tcp 127.0.0.1:8388: connect: connection refused</code> 这种错误。</p>
-<h3 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5. 参考资料"></a>5. 参考资料</h3><p><a href="https://blog.kuoruan.com/110.html" target="_blank" rel="noopener">https://blog.kuoruan.com/110.html</a></p>
-
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/05/25/append-and-cap-in-golang/" title= Golang 中为切片 append 元素之后 cap 变化的问题 >
-                    <div class="nextTitle">Golang 中为切片 append 元素之后 cap 变化的问题</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/05/21/go-tools-in-vscode/" title= 在 VSCODE 中安装 Go 语言相关支持 >
-                    <div class="prevTitle">在 VSCODE 中安装 Go 语言相关支持</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
+            <main class="main index-page">
     
-    <div id="disqus_thread"></div>
-    <script>
-        /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        
-        var disqus_config = function () {
-        this.page.url = "http://zhcexo.com/2018/05/24/ladder/";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "记一次搭梯子的过程"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        
-        (function () { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://zhcexosblog.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
     
-    <!--PC版-->
-
-    <!--PC版-->
-
-
     
-    <!-- 评论 -->
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/06/16/html-webpack-plugin-multiple-entries/" >
+                
+                    <span>让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</span>
+            </a>
+            <div class="abstract-content">
+                遇到的问题项目里有需要处理一堆目录的 html 文件自动生成，并且生成到相应的目录中。与 html 文件相对应的样式 css 文件和脚本 js 文件，也要放到相应的目录中。例如：
+123456789101112131415161718192021222324252627282930目录结构如下：- dist- src    |- a        `- index.js    |- b        `- index.js    |- c        `- index.js    `- tpl        `- index.html    希望得到的结果是，a，b，c 三个目录中的 ...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/16</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >
+                
+                    <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
+            </a>
+            <div class="abstract-content">
+                遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
+问题表现各自用 webpack 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。
+解决方法在 webpack 的配置选项里使用 output.jsonpFunction。
+看一下文档里说的：
+
+output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 Comm...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
 </main>
             <!-- profile -->
             
@@ -498,24 +425,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤：-以下步骤默认都是-root-下执行"><span class="toc-number">1.</span> <span class="toc-text">步骤：(以下步骤默认都是 root 下执行)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装-python-pip-和-55"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装 python-pip 和 55</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置和启用-55"><span class="toc-number">1.2.</span> <span class="toc-text">2. 配置和启用 55</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装-kcptun"><span class="toc-number">1.3.</span> <span class="toc-text">3. 安装 kcptun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注意"><span class="toc-number">1.4.</span> <span class="toc-text">4. 注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-参考资料"><span class="toc-number">1.5.</span> <span class="toc-text">5. 参考资料</span></a></li></ol></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -747,8 +656,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
