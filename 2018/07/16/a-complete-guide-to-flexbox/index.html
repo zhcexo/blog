@@ -443,6 +443,12 @@ height:50vh;
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果被设置为 0，那么内容周围的多余空白就没被考虑进去，如果设置为 <code>auto</code>，那么多余空白的分布，取决于它的 <code>flex-grow</code> 值。见下图：</p>
 <p><img src="https://www.w3.org/TR/css-flexbox-1/images/rel-vs-abs-flex.svg" alt="flex-basis"></p>
+<blockquote>
+<p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+</blockquote>
+<blockquote>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+</blockquote>
 <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>这个属性是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 三个属性的简写方式，其中第二和第三个参数(也就是 <code>flex-shrink</code> 和 <code>flex-basis</code>)是可选的。默认值是 <code>0 1 auto</code>。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>强烈建议使用这个缩写的属性</strong> 而不是单独设置各种属性的值。因为缩写方法会智能地设置其他值。</p>
@@ -452,6 +458,7 @@ height:50vh;
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意：<code>float</code>、<code>clear</code> 和 <code>vertical-align</code> 对 flex 子元素无影响。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox - css-tricks.com</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程：语法篇</a></p>
 
     </article>
     <!-- 前后页  -->
@@ -686,6 +693,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 9 </div>
     
     <div class="post-archive">
@@ -750,9 +767,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
-        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
-    
         <span class="sidebar-tag-name" data-tags="server"><span class="iconfont-archer">&#xe606;</span>server</span>
+    
+        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
         <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
     
