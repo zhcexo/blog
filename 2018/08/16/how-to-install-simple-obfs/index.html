@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>zhcexo&#39;s blog</title>
+    <title>安装Simple Obfs · zhcexo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/favicon.ico>
     <script>
@@ -185,12 +187,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >zhcexo&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">安装Simple Obfs</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>zhcexo's blog</a>
 </header>
@@ -204,24 +217,62 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            安装Simple Obfs
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/08/16</span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -305,95 +356,90 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>非常不爽，不知道最近 WALL 是做了什么升级，我的 55 挂了，使用 chacha20-ietf-poly1305 都不行，之前还用着挺好的。无奈只好又寻方法，找到了 Simple Obfs。</p>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p><strong>以下命令均在 root 权限下执行，所以无 sudo</strong></p>
+<p>废话不多说，先安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libev-dev asciidoc xmlto automake</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/shadowsocks/simple-obfs.git</span><br><span class="line"><span class="built_in">cd</span> simple-obfs</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure &amp;&amp; make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>使用 Simple Obfs 有两种方式，一种是作为 55 的插件，另一种是独立模式，我怕麻烦，所以使用作为 55 插件的方法。以前用的是 Python 版的 55，不支持外挂插件的样子，所以换成 55-libev。安装之：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install shadowsocks-libev</span><br></pre></td></tr></table></figure>
+<p>如果安装成功了，在命令行下输入 <code>ss-server</code> 会出现相应提示的，这一步不详说。（要注意的是，Python 版的命令是 <code>ssserver</code>，55-libev 的命令是 <code>ss-server</code>，有一横杠的区别）</p>
+<p>接下来修改 55 的配置文件，在配置文件里，添加两行参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"plugin"</span>: <span class="string">"obfs-server"</span>,</span><br><span class="line"><span class="string">"plugin_opts"</span>: <span class="string">"obfs=http"</span></span><br></pre></td></tr></table></figure>
+<p>万事具备，使用如下命令启动 55：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -c config.json</span><br></pre></td></tr></table></figure>
+<p>如果输出没有报错，就表明启动正常，接下来按 <code>Ctrl+C</code> 结束掉。为啥？当然是重新开始后台启动啊：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ss-server -c config.json &gt; /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>注释：</p>
+<ul>
+<li><code>/dev/null</code> 代表空设备文件</li>
+<li><code>&gt;</code> 表示重定向到哪里，例如： <code>echo &quot;123&quot; &gt; /home/123.txt</code></li>
+<li><code>2</code> 表示 stderr 标准错误</li>
+<li><code>&amp;</code> 表示等同于的意思，表示 2 的输出重定向等同于 1</li>
+<li><code>1</code> 表示 stdout 标准输出，系统默认是 1，所以 <code>&gt; /dev/null</code> 等同于 <code>1 &gt; /dev/null</code></li>
+<li><code>&gt; /dev/null</code> 表示标准输出重定向到空设备文件，也就是不输出任何信息到终端</li>
+<li><code>2&gt;&amp;1</code> 接着，标准错误输出重定向（等同于）标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件</li>
+<li><code>结尾处的 &amp;</code> 将命令同时放入后台运行</li>
+</ul>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><p>下载 obfs-local，<strong>然后把压缩包里面的两个文件，解压到 55 相同的目录里面</strong>。接着打开 55 的服务器配置界面，把 <strong>插件程序</strong> 和 <strong>插件选项</strong> 两个空位置，填写如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">插件程序：obfs-local</span><br><span class="line">插件选项：obfs=http;obfs-host=www.bing.com</span><br></pre></td></tr></table></figure>
+<p>到此为止，全部完成，终于又能用 Google 了~</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://teddysun.com/511.html" target="_blank" rel="noopener">如何安装和配置simple-obfs服务端</a></li>
+<li><a href="https://blog.csdn.net/wwzuizz/article/details/78194159" target="_blank" rel="noopener">55-libev</a></li>
+<li><a href="https://roxhaiy.wordpress.com/2014/07/29/%E5%9C%A8linux%E9%85%8D%E7%BD%AEshadowsocks-libev%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E8%BF%9B%E8%A1%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" target="_blank" rel="noopener">配置55-libev服务器端进行KX上网</a></li>
+</ul>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/08/15/a-complete-guide-to-grid/" title= Grid 布局完全指南 >
+                    <div class="prevTitle">Grid 布局完全指南</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "http://zhcexo.com/2018/08/16/how-to-install-simple-obfs/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "安装Simple Obfs"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://zhcexosblog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/25/append-and-cap-in-golang/" >
-                
-                    <span>Golang 中为切片 append 元素之后 cap 变化的问题</span>
-            </a>
-            <div class="abstract-content">
-                在学习 Go 语言基础的时候，看到了 slice 切片这里，里面有个 append 方法，用于往 slice 里添加元素。代码如下：
-1234567891011121314151617181920212223package mainimport (    "fmt")func main() &#123;    var numbers []int    printSlice(numbers)    numbers = append(numbers, 0)    printSlice(numbers)    numbers = append(numbers, 1)    printSlice...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/25</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/24/ladder/" >
-                
-                    <span>记一次搭梯子的过程</span>
-            </a>
-            <div class="abstract-content">
-                之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。
-服务器安装的是 ubuntu 18 LTS x64 版本，准备使用 55 和 kcp 当梯子。
-步骤：(以下步骤默认都是 root 下执行)1. 安装 python-pip 和 55使用两个命令即可：
-12apt-get install python-pippip install git+https://github.com/shadowsocks/shadowsocks.git@master
-执行第二个命令如果报错，例如 Import...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/24</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/21/go-tools-in-vscode/" >
-                
-                    <span>在 VSCODE 中安装 Go 语言相关支持</span>
-            </a>
-            <div class="abstract-content">
-                写好 Go 文件，用 VSCode 打开之后，右下角会提示缺少 Go 相关的支持，然后会有两个按钮 Install 和 Show。Install 是自动安装这些支持，Show 是显示缺了些什么。但实际情况是，点了 Install 之后，控制台一堆报错并且安装失败。
-点击 Install 或者 Show，控制台里已经显示缺少如下工具：
-12345678github.com/ramya-rao-a/go-outlinegithub.com/acroca/go-symbolsgolang.org/x/tools/cmd/gurugolang.org/x/tools/cmd/gorenamegi...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -452,6 +498,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端配置"><span class="toc-number">1.</span> <span class="toc-text">服务端配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端配置"><span class="toc-number">2.</span> <span class="toc-text">客户端配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -735,6 +799,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
