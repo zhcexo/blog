@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>zhcexo&#39;s blog</title>
+    <title>为nginx配置vhosts（Windows开发环境） · zhcexo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/favicon.ico>
     <script>
@@ -185,12 +187,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >zhcexo&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">为nginx配置vhosts（Windows开发环境）</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>zhcexo's blog</a>
 </header>
@@ -204,24 +217,62 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            为nginx配置vhosts（Windows开发环境）
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/10/29</span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -305,300 +356,76 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/10/29/add-nginx-vhosts/" >
-                
-                    <span>为nginx配置vhosts（Windows开发环境）</span>
-            </a>
-            <div class="abstract-content">
-                公司开发了自己的页面渲染系统，而且涉及需要迁移的站点非常多，所以需要在开发中配置一些虚拟主机。以前玩的都是 Apache，但是后端推荐使用比较轻量的 nginx，所以扒了一下 nginx 的 vhosts 的配置方法。
-首先，下载 nginx 的可执行文件，是个压缩文件，解压之后，放到一个容易访问的目录，以下用 nginx_dir 代替。ngnix 的默认配置文件是 nginx_dir/conf/nginx.conf。
-其次，在 nginx_dir/conf/ 下新建一个目录，叫 vhosts，并且在 nginx_dir/conf/vhosts/ 下新建一个文件，名为 vhosts.co...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/29</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/08/27/array-memo/" >
-                
-                    <span>一些数组方法的备忘</span>
-            </a>
-            <div class="abstract-content">
-                forEachforEach() 方法对数据的每一个元素执行一次提供的函数
-语法1array.forEach(callback (currentValue, index, array) &#123;&#125;[, thisArg]);
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>公司开发了自己的页面渲染系统，而且涉及需要迁移的站点非常多，所以需要在开发中配置一些虚拟主机。以前玩的都是 Apache，但是后端推荐使用比较轻量的 nginx，所以扒了一下 nginx 的 vhosts 的配置方法。</p>
+<p><strong>首先</strong>，下载 nginx 的可执行文件，是个压缩文件，解压之后，放到一个容易访问的目录，以下用 <code>nginx_dir</code> 代替。ngnix 的默认配置文件是 <code>nginx_dir/conf/nginx.conf</code>。</p>
+<p><strong>其次</strong>，在 <code>nginx_dir/conf/</code> 下新建一个目录，叫 <code>vhosts</code>，并且在 <code>nginx_dir/conf/vhosts/</code> 下新建一个文件，名为 <code>vhosts.conf</code>。</p>
+<p><strong>第三</strong>，在 <code>nginx_dir/conf/nginx.conf</code> 的配置里，位于 <code>http {...}</code> 的最后面，于 <code>}</code> 之前，添加 <code>include vhosts/*.conf;</code>。添加的代码意义为：在 <code>nginx.conf</code> 中引入 <code>vhosts</code> 下所有的 <code>.conf</code> 文件。</p>
+<p>以下即是 <code>vhosts.conf</code> 里面的配置，因为开发中主要用到反向代理，其他的按文档按需添加就行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> example 代理相关配置</span><br><span class="line">server &#123;</span><br><span class="line">    # 监听端口号</span><br><span class="line">    listen 7777;</span><br><span class="line">    </span><br><span class="line">    # 反向代理的域名</span><br><span class="line">    server_name example.localhost;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        #本地模拟服务器地址及端口</span><br><span class="line">        charset utf-8;</span><br><span class="line">        proxy_pass http://127.0.0.1:1987;</span><br><span class="line">        proxy_set_header    Custom-Header 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>第四</strong>，统统设置完之后，打开命令行，定位到 <code>nginx_dir</code>，使用如下命令检查配置是否正确：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nginx.exe -t</span><br></pre></td></tr></table></figure>
+<p>如果出现以下提示，表明配置没问题，出现其他提示自行排查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx: the configuration file nginx_dir/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file nginx_dir/conf/nginx.conf <span class="built_in">test</span> is successful</span><br></pre></td></tr></table></figure>
+<p><strong>最后</strong>，因为是在 windows 环境下，所以启动 nginx 使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ start nginx.exe</span><br></pre></td></tr></table></figure>
+<p>使用 <code>start</code> 运行而不是直接运行，是让命令行的窗口可以进行别的操作，而不是一直僵在前台。</p>
+<p><strong>补充</strong>：</p>
+<ul>
+<li>使用 <code>nginx -s quit</code> 命令来关闭运行中的 nginx 进程</li>
+<li>使用 <code>nginx -s reload</code> 命令来重启运行中的 nginx，一般用于修改配置文件之后操作</li>
+</ul>
 
-callback - 为数组中每个元素执行的函数，接收三个参数
-currentVale - callback 的第一个参数，当前正处理的元素
-index - 可选参数，callback 的第二个参数，当前正处理的元素的索引
-array - 可选参数，callback 的第三个参数，是正在处理的数组
-thisArg - 可选参数，当执行回调函数时用作 t...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/27</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/08/27/array-memo/" title= 一些数组方法的备忘 >
+                    <div class="prevTitle">一些数组方法的备忘</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "javascript">javascript</a>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "http://zhcexo.com/2018/10/29/add-nginx-vhosts/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "为nginx配置vhosts（Windows开发环境）"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://zhcexosblog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     
-</div>
-                
-            </div>
-        </article>
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/08/16/how-to-install-simple-obfs/" >
-                
-                    <span>安装Simple Obfs</span>
-            </a>
-            <div class="abstract-content">
-                非常不爽，不知道最近 WALL 是做了什么升级，我的 55 挂了，使用 chacha20-ietf-poly1305 都不行，之前还用着挺好的。无奈只好又寻方法，找到了 Simple Obfs。
-服务端配置以下命令均在 root 权限下执行，所以无 sudo
-废话不多说，先安装：
-12345678apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libev-dev asciidoc xmlto automakegit clone https://...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/08/15/a-complete-guide-to-grid/" >
-                
-                    <span>Grid 布局完全指南</span>
-            </a>
-            <div class="abstract-content">
-                Grid 布局是 CSS 中最强大的布局方式。它是一个二维系统，也就是说，它能同时处理行和列，而不像 flexbox 这样是一个一维系统。使用 Grid 布局方式可以同时将 CSS 规则作用于父元素（成为 Grid Container）和子元素（成为 Grid Items）。
-介绍CSS Grid Layout（又叫做 Grid），是一个二维的、基于网格的布局系统，目标是完全改变我们基于网格设计的用户界面。CSS 已经常用于 web 页面的布局，但并不是总做得非常好。开始，我们使用表格 tables 布局，然后使用浮动 floats，定位 position 和 inline-block，...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "css">css</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/16/a-complete-guide-to-flexbox/" >
-                
-                    <span>Flexbox 完全指南</span>
-            </a>
-            <div class="abstract-content">
-                背景知识Flexbox Layout (Flexible Box) 模式用于提供一个更有效率的布局途径，让容器(container) 中的子元素(items) 在尺寸未知或者动态变化的时候，也能对齐和分配项目之间的空白，因为称作 flex (弹性)。
-Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(或者顺序)，以便用最佳方式填充可用空间(大多用来适应各种不同的设备和屏幕尺寸)。flex 容器能让里面的子元素展示以适应可用空间，或者让它们收缩以防止溢出。
-更重要的是，flexbox 的布局方式与常规布局(比如 block 就是基于垂直方向的，而 inline 是基于水平方向的...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "css">css</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/07/06/ubuntu-update-and-ss-update/" >
-                
-                    <span>更新Ubuntu以及更新SS以支持新的加密方法</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题每次用 SSH 的方式登入服务器的时候，都会提示如下信息：
-12345678Welcome to Ubuntu *.*.* LTS (GNU/Linux *.*.*-*-generic x86_64) * Documentation:  https://help.ubuntu.com/ ……13 packages can be updated.10 updates are security updates.
-字面提示是有 13 个包可以升级，其中 10 个是安全更新。
-事实上 Ubuntu 更新还是挺容易的，因为有 apt-get，不过更新完之后，还是会提示一些安全更新没做完，...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/06</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/06/16/html-webpack-plugin-multiple-entries/" >
-                
-                    <span>让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题项目里有需要处理一堆目录的 html 文件自动生成，并且生成到相应的目录中。与 html 文件相对应的样式 css 文件和脚本 js 文件，也要放到相应的目录中。例如：
-123456789101112131415161718192021222324252627282930目录结构如下：- dist- src    |- a        `- index.js    |- b        `- index.js    |- c        `- index.js    `- tpl        `- index.html    希望得到的结果是，a，b，c 三个目录中的 ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/25/append-and-cap-in-golang/" >
-                
-                    <span>Golang 中为切片 append 元素之后 cap 变化的问题</span>
-            </a>
-            <div class="abstract-content">
-                在学习 Go 语言基础的时候，看到了 slice 切片这里，里面有个 append 方法，用于往 slice 里添加元素。代码如下：
-1234567891011121314151617181920212223package mainimport (    "fmt")func main() &#123;    var numbers []int    printSlice(numbers)    numbers = append(numbers, 0)    printSlice(numbers)    numbers = append(numbers, 1)    printSlice...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/25</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/24/ladder/" >
-                
-                    <span>记一次搭梯子的过程</span>
-            </a>
-            <div class="abstract-content">
-                之前一直用的 Japan 的线路，结果越来越不稳定，后来干脆变成不可用了，所以换了一家 VPS 换了一条线路，以此文章记录一下这次的过程，方便以后折腾。
-服务器安装的是 ubuntu 18 LTS x64 版本，准备使用 55 和 kcp 当梯子。
-步骤：(以下步骤默认都是 root 下执行)1. 安装 python-pip 和 55使用两个命令即可：
-12apt-get install python-pippip install git+https://github.com/shadowsocks/shadowsocks.git@master
-执行第二个命令如果报错，例如 Import...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/24</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/05/21/go-tools-in-vscode/" >
-                
-                    <span>在 VSCODE 中安装 Go 语言相关支持</span>
-            </a>
-            <div class="abstract-content">
-                写好 Go 文件，用 VSCode 打开之后，右下角会提示缺少 Go 相关的支持，然后会有两个按钮 Install 和 Show。Install 是自动安装这些支持，Show 是显示缺了些什么。但实际情况是，点了 Install 之后，控制台一堆报错并且安装失败。
-点击 Install 或者 Show，控制台里已经显示缺少如下工具：
-12345678github.com/ramya-rao-a/go-outlinegithub.com/acroca/go-symbolsgolang.org/x/tools/cmd/gurugolang.org/x/tools/cmd/gorenamegi...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/21</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "go">go</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">NEXT &#62;</a>
-    </nav>
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -657,6 +484,24 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -974,6 +819,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>

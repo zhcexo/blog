@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhcexo.com/"/>
-  <updated>2018-08-27T09:40:38.552Z</updated>
+  <updated>2018-10-29T09:23:44.911Z</updated>
   <id>http://zhcexo.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为nginx配置vhosts（Windows开发环境）</title>
+    <link href="http://zhcexo.com/2018/10/29/add-nginx-vhosts/"/>
+    <id>http://zhcexo.com/2018/10/29/add-nginx-vhosts/</id>
+    <published>2018-10-29T08:57:36.000Z</published>
+    <updated>2018-10-29T09:23:44.911Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司开发了自己的页面渲染系统，而且涉及需要迁移的站点非常多，所以需要在开发中配置一些虚拟主机。以前玩的都是 Apache，但是后端推荐使用比较轻量的 nginx，所以扒了一下 nginx 的 vhosts 的配置方法。</p><p><strong>首先</strong>，下载 nginx 的可执行文件，是个压缩文件，解压之后，放到一个容易访问的目录，以下用 <code>nginx_dir</code> 代替。ngnix 的默认配置文件是 <code>nginx_dir/conf/nginx.conf</code>。</p><p><strong>其次</strong>，在 <code>nginx_dir/conf/</code> 下新建一个目录，叫 <code>vhosts</code>，并且在 <code>nginx_dir/conf/vhosts/</code> 下新建一个文件，名为 <code>vhosts.conf</code>。</p><p><strong>第三</strong>，在 <code>nginx_dir/conf/nginx.conf</code> 的配置里，位于 <code>http {...}</code> 的最后面，于 <code>}</code> 之前，添加 <code>include vhosts/*.conf;</code>。添加的代码意义为：在 <code>nginx.conf</code> 中引入 <code>vhosts</code> 下所有的 <code>.conf</code> 文件。</p><p>以下即是 <code>vhosts.conf</code> 里面的配置，因为开发中主要用到反向代理，其他的按文档按需添加就行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> example 代理相关配置</span><br><span class="line">server &#123;</span><br><span class="line">    # 监听端口号</span><br><span class="line">    listen 7777;</span><br><span class="line">    </span><br><span class="line">    # 反向代理的域名</span><br><span class="line">    server_name example.localhost;</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        #本地模拟服务器地址及端口</span><br><span class="line">        charset utf-8;</span><br><span class="line">        proxy_pass http://127.0.0.1:1987;</span><br><span class="line">        proxy_set_header    Custom-Header 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>第四</strong>，统统设置完之后，打开命令行，定位到 <code>nginx_dir</code>，使用如下命令检查配置是否正确：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nginx.exe -t</span><br></pre></td></tr></table></figure><p>如果出现以下提示，表明配置没问题，出现其他提示自行排查：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx: the configuration file nginx_dir/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file nginx_dir/conf/nginx.conf <span class="built_in">test</span> is successful</span><br></pre></td></tr></table></figure><p><strong>最后</strong>，因为是在 windows 环境下，所以启动 nginx 使用以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ start nginx.exe</span><br></pre></td></tr></table></figure><p>使用 <code>start</code> 运行而不是直接运行，是让命令行的窗口可以进行别的操作，而不是一直僵在前台。</p><p><strong>补充</strong>：</p><ul><li>使用 <code>nginx -s quit</code> 命令来关闭运行中的 nginx 进程</li><li>使用 <code>nginx -s reload</code> 命令来重启运行中的 nginx，一般用于修改配置文件之后操作</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;公司开发了自己的页面渲染系统，而且涉及需要迁移的站点非常多，所以需要在开发中配置一些虚拟主机。以前玩的都是 Apache，但是后端推荐使用比较轻量的 nginx，所以扒了一下 nginx 的 vhosts 的配置方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首先&lt;/strong&gt;，
+      
+    
+    </summary>
+    
+    
+      <category term="server" scheme="http://zhcexo.com/tags/server/"/>
+    
+  </entry>
   
   <entry>
     <title>一些数组方法的备忘</title>

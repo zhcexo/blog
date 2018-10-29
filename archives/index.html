@@ -310,6 +310,34 @@
     
     
         <article class="index-post">
+            <a class="abstract-title" href = "/2018/10/29/add-nginx-vhosts/" >
+                
+                    <span>为nginx配置vhosts（Windows开发环境）</span>
+            </a>
+            <div class="abstract-content">
+                公司开发了自己的页面渲染系统，而且涉及需要迁移的站点非常多，所以需要在开发中配置一些虚拟主机。以前玩的都是 Apache，但是后端推荐使用比较轻量的 nginx，所以扒了一下 nginx 的 vhosts 的配置方法。
+首先，下载 nginx 的可执行文件，是个压缩文件，解压之后，放到一个容易访问的目录，以下用 nginx_dir 代替。ngnix 的默认配置文件是 nginx_dir/conf/nginx.conf。
+其次，在 nginx_dir/conf/ 下新建一个目录，叫 vhosts，并且在 nginx_dir/conf/vhosts/ 下新建一个文件，名为 vhosts.co...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/29</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "server">server</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="abstract-title" href = "/2018/08/27/array-memo/" >
                 
                     <span>一些数组方法的备忘</span>
@@ -565,37 +593,6 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
             </div>
         </article>
     
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >
-                
-                    <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
-问题表现各自用 webpack 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。
-解决方法在 webpack 的配置选项里使用 output.jsonpFunction。
-看一下文档里说的：
-
-output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 Comm...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
@@ -829,7 +826,10 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
     
     
-    <div class="total-archive"> Total : 12 </div>
+    
+    
+    
+    <div class="total-archive"> Total : 13 </div>
     
     <div class="post-archive">
     
@@ -838,6 +838,11 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/29</span><a class="archive-post-title" href= "/2018/10/29/add-nginx-vhosts/" >为nginx配置vhosts（Windows开发环境）</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -904,19 +909,19 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="server"><span class="iconfont-archer">&#xe606;</span>server</span>
-    
         <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
-        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
-    
         <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="server"><span class="iconfont-archer">&#xe606;</span>server</span>
+    
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
+    
+        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
         <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
     
         <span class="sidebar-tag-name" data-tags="css"><span class="iconfont-archer">&#xe606;</span>css</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
