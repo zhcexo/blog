@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
     <!-- title -->
 
 
 
 
+<!-- keywords -->
 
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="zhcexo">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="zhcexo">
+    
+    <meta name="keywords" content="frontend,html5,css,javascript,webpack,node,nodejs">
+    
+    <meta name="description" content="a frontend developer's blog, writing about coding, reading, living.">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>zhcexo&#39;s blog</title>
     <style type="text/css">
     @font-face {
@@ -36,7 +49,6 @@
         width: 100%;
         /* height: 50vh; */
         overflow: hidden;
-        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7);
     }
 
     .site-intro-placeholder {
@@ -49,7 +61,7 @@
         background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
         background-position: center center;
         transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s 1;
+        animation: gradient-move 2.5s ease-out 0s infinite;
     }
 
     @keyframes gradient-move {
@@ -63,110 +75,126 @@
 
 </style>
 
-    <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
-        
-    <link rel="icon" href= /assets/favicon.ico>
-    <script>
-        (function (w) {
-            "use strict";
-            // rel=preload support test
-            if (!w.loadCSS) {
-                w.loadCSS = function () { };
-            }
-            // define on the loadCSS obj
-            var rp = loadCSS.relpreload = {};
-            // rel=preload feature support test
-            // runs once and returns a function for compat purposes
-            rp.support = (function () {
-                var ret;
-                try {
-                    ret = w.document.createElement("link").relList.supports("preload");
-                } catch (e) {
-                    ret = false;
-                }
-                return function () {
-                    return ret;
-                };
-            })();
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
 
-            // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-            // then change that media back to its intended value on load
-            rp.bindMediaToggle = function (link) {
-                // remember existing media attr for ultimate state, or default to 'all'
-                var finalMedia = link.media || "all";
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
 
-                function enableStylesheet() {
-                    link.media = finalMedia;
-                }
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
 
-                // bind load handlers to enable media
-                if (link.addEventListener) {
-                    link.addEventListener("load", enableStylesheet);
-                } else if (link.attachEvent) {
-                    link.attachEvent("onload", enableStylesheet);
-                }
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
 
-                // Set rel and non-applicable media type to start an async request
-                // note: timeout allows this to happen async to let rendering continue in IE
-                setTimeout(function () {
-                    link.rel = "stylesheet";
-                    link.media = "only x";
-                });
-                // also enable media after 3 seconds,
-                // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-                setTimeout(enableStylesheet, 3000);
-            };
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
 
-            // loop through link elements in DOM
-            rp.poly = function () {
-                // double check this to prevent external calls from running
-                if (rp.support()) {
-                    return;
-                }
-                var links = w.document.getElementsByTagName("link");
-                for (var i = 0; i < links.length; i++) {
-                    var link = links[i];
-                    // qualify links to those with rel=preload and as=style attrs
-                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) {
-                        // prevent rerunning on link
-                        link.setAttribute("data-loadcss", true);
-                        // bind listeners to toggle media back
-                        rp.bindMediaToggle(link);
-                    }
-                }
-            };
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
 
-            // if unsupported, run the polyfill
-            if (!rp.support()) {
-                // run once at least
-                rp.poly();
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
 
-                // rerun poly on an interval until onload
-                var run = w.setInterval(rp.poly, 500);
-                if (w.addEventListener) {
-                    w.addEventListener("load", function () {
-                        rp.poly();
-                        w.clearInterval(run);
-                    });
-                } else if (w.attachEvent) {
-                    w.attachEvent("onload", function () {
-                        rp.poly();
-                        w.clearInterval(run);
-                    });
-                }
-            }
-            // commonjs
-            if (typeof exports !== "undefined") {
-                exports.loadCSS = loadCSS;
-            }
-            else {
-                w.loadCSS = loadCSS;
-            }
-        }(typeof global !== "undefined" ? global : this));
-    </script>
-    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
-    <script src="/scripts/main.js" defer></script>
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
     <!-- 百度统计  -->
     
@@ -192,24 +220,22 @@
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
     
-    <a class="home-link" href=/>zhcexo's blog</a>
+    <a class="home-link" href="/">zhcexo's blog</a>
 </header>
     <div class="wrapper">
-        <div class="site-intro" style=
+        <div class="site-intro" style="
 
 
 
 
 
 
-
-
->
+">
     
     <!-- 主页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
@@ -226,16 +252,7 @@
     </div>
 </div>
         <script>
-  // load webfont-loader async, and add callback function
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-  
+ 
   // get user agent
   var browser = {
     versions: function () {
@@ -265,13 +282,9 @@
     if (document.getElementsByClassName('site-intro-meta')) {
       document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
       document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
-        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
-      if (postIntroTags) {
-        postIntroTags.classList.add('post-fade-in');
-      }
-      if (postIntroMeat) {
-        postIntroMeat.classList.add('post-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
       }
     }
   }
@@ -301,7 +314,37 @@
     }
   }
 
-  async("https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", asyncCb)
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
@@ -309,61 +352,67 @@
     
     
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/06/16/html-webpack-plugin-multiple-entries/" >
-                
-                    <span>让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题项目里有需要处理一堆目录的 html 文件自动生成，并且生成到相应的目录中。与 html 文件相对应的样式 css 文件和脚本 js 文件，也要放到相应的目录中。例如：
-123456789101112131415161718192021222324252627282930目录结构如下：- dist- src    |- a        `- index.js    |- b        `- index.js    |- c        `- index.js    `- tpl        `- index.html    希望得到的结果是，a，b，c 三个目录中的 ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2018/06/16/html-webpack-plugin-multiple-entries/">
+            
+                <span>让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</span>
+        </a>
+        <div class="abstract-content">
+            遇到的问题项目里有需要处理一堆目录的 html 文件自动生成，并且生成到相应的目录中。与 html 文件相对应的样式 css 文件和脚本 js 文件，也要放到相应的目录中。例如：
+123456789101112131415161718192021222324252627282930目录结构如下：- dist- src    |- a        `- index.js    |- b        `- index.js    |- c        `- index.js    `- tpl        `- index.html    希望得到的结果是，a，b，c 三个目录中的 ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/16</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="webpack">webpack</a>
     
 </div>
-                
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >
-                
-                    <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2018/04/18/webpack-multiple-instance-on-the-same-page/">
+            
+                <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
+        </a>
+        <div class="abstract-content">
+            遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
 问题表现各自用 webpack 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。
 解决方法在 webpack 的配置选项里使用 output.jsonpFunction。
 看一下文档里说的：
 
 output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 Comm...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
             </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="webpack">webpack</a>
     
 </div>
-                
-            </div>
-        </article>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
     
@@ -379,7 +428,7 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
         
             
-                <a href="mailto:i@zhcexo.com" class="iconfont-archer email" title=email ></a>
+                <a href="mailto:i@zhcexo.com" class="iconfont-archer email" title="email"></a>
             
         
     
@@ -408,8 +457,18 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
         
     
         
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
             
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
             
         
     
@@ -588,7 +647,15 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
     
     
-    <div class="total-archive"> Total : 14 </div>
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 14
+        </div>
+        <!-- search  -->
+        
+    </div>
     
     <div class="post-archive">
     
@@ -600,7 +667,7 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2019/03/08/node-bcrypt-and-vue-casing/" >最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href="/2019/03/08/node-bcrypt-and-vue-casing/">最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示</a>
         </li>
     
     
@@ -614,85 +681,83 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/29</span><a class="archive-post-title" href= "/2018/10/29/add-nginx-vhosts/" >为nginx配置vhosts（Windows开发环境）</a>
+            <span class="archive-post-date">10/29</span><a class="archive-post-title" href="/2018/10/29/add-nginx-vhosts/">为nginx配置vhosts（Windows开发环境）</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2018/08/27/array-memo/" >一些数组方法的备忘</a>
+            <span class="archive-post-date">08/27</span><a class="archive-post-title" href="/2018/08/27/array-memo/">一些数组方法的备忘</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/16</span><a class="archive-post-title" href= "/2018/08/16/how-to-install-simple-obfs/" >安装Simple Obfs</a>
+            <span class="archive-post-date">08/16</span><a class="archive-post-title" href="/2018/08/16/how-to-install-simple-obfs/">安装Simple Obfs</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span><a class="archive-post-title" href= "/2018/08/15/a-complete-guide-to-grid/" >Grid 布局完全指南</a>
+            <span class="archive-post-date">08/15</span><a class="archive-post-title" href="/2018/08/15/a-complete-guide-to-grid/">Grid 布局完全指南</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/16</span><a class="archive-post-title" href= "/2018/07/16/a-complete-guide-to-flexbox/" >Flexbox 完全指南</a>
+            <span class="archive-post-date">07/16</span><a class="archive-post-title" href="/2018/07/16/a-complete-guide-to-flexbox/">Flexbox 完全指南</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2018/07/06/ubuntu-update-and-ss-update/" >更新Ubuntu以及更新SS以支持新的加密方法</a>
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href="/2018/07/06/ubuntu-update-and-ss-update/">更新Ubuntu以及更新SS以支持新的加密方法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/16</span><a class="archive-post-title" href= "/2018/06/16/html-webpack-plugin-multiple-entries/" >让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</a>
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href="/2018/06/16/html-webpack-plugin-multiple-entries/">让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/25</span><a class="archive-post-title" href= "/2018/05/25/append-and-cap-in-golang/" >Golang 中为切片 append 元素之后 cap 变化的问题</a>
+            <span class="archive-post-date">05/25</span><a class="archive-post-title" href="/2018/05/25/append-and-cap-in-golang/">Golang 中为切片 append 元素之后 cap 变化的问题</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/24</span><a class="archive-post-title" href= "/2018/05/24/ladder/" >记一次搭梯子的过程</a>
+            <span class="archive-post-date">05/24</span><a class="archive-post-title" href="/2018/05/24/ladder/">记一次搭梯子的过程</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2018/05/21/go-tools-in-vscode/" >在 VSCODE 中安装 Go 语言相关支持</a>
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href="/2018/05/21/go-tools-in-vscode/">在 VSCODE 中安装 Go 语言相关支持</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/18</span><a class="archive-post-title" href= "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >同一页面运行wepback不同实例出现冲突的解决办法</a>
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2018/04/18/webpack-multiple-instance-on-the-same-page/">同一页面运行wepback不同实例出现冲突的解决办法</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/2018/03/23/git-cheat-sheet/" >常用 git 命令备忘</a>
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href="/2018/03/23/git-cheat-sheet/">常用 git 命令备忘</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/2018/03/22/phpstorm-with-git-bash/" >在 PhpStorm 中集成 git bash</a>
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href="/2018/03/22/phpstorm-with-git-bash/">在 PhpStorm 中集成 git bash</a>
         </li>
     
-    </div>
+    </ul></div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
-    
         <span class="sidebar-tag-name" data-tags="server"><span class="iconfont-archer">&#xe606;</span>server</span>
-    
-        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
         <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
     
-        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
+        <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
-        <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
         <span class="sidebar-tag-name" data-tags="node"><span class="iconfont-archer">&#xe606;</span>node</span>
     
@@ -700,15 +765,17 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
     
         <span class="sidebar-tag-name" data-tags="powershell"><span class="iconfont-archer">&#xe606;</span>powershell</span>
     
+        <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
+    
         <span class="sidebar-tag-name" data-tags="css"><span class="iconfont-archer">&#xe606;</span>css</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br/>
-    1、请确保node版本大于6.2<br/>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
     3、在根目录_config.yml里添加配置：
     <pre style="color: #787878; font-size: 0.6rem;">
 jsonContent:
@@ -743,17 +810,29 @@ jsonContent:
 </div> 
     <script>
     var siteMeta = {
-        root: '/',
-        author: 'zhcexo'
+        root: "/",
+        author: "zhcexo"
     }
 </script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
     <!-- busuanzi  -->
     
     <!-- CNZZ  -->
     
     </div>
     <!-- async load share.js -->
-    
+     
     </body>
 </html>
 
