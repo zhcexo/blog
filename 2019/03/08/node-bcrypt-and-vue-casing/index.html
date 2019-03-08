@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>zhcexo&#39;s blog</title>
+    <title>最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示 · zhcexo&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/favicon.ico>
     <script>
@@ -185,12 +187,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >zhcexo&#39;s blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>zhcexo's blog</a>
 </header>
@@ -204,24 +217,66 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "node">node</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "vue">vue</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "powershell">powershell</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/03/08</span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -305,68 +360,90 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/06/16/html-webpack-plugin-multiple-entries/" >
-                
-                    <span>让HTML Webpack Plugin根据多entry把html文件生成到指定目录中</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题项目里有需要处理一堆目录的 html 文件自动生成，并且生成到相应的目录中。与 html 文件相对应的样式 css 文件和脚本 js 文件，也要放到相应的目录中。例如：
-123456789101112131415161718192021222324252627282930目录结构如下：- dist- src    |- a        `- index.js    |- b        `- index.js    |- c        `- index.js    `- tpl        `- index.html    希望得到的结果是，a，b，c 三个目录中的 ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/16</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="abstract-title" href = "/2018/04/18/webpack-multiple-instance-on-the-same-page/" >
-                
-                    <span>同一页面运行wepback不同实例出现冲突的解决办法</span>
-            </a>
-            <div class="abstract-content">
-                遇到的问题对于同一个页面功能由不同的同事开发，都用到了 webpack 以及 CommonsChunkPlugin，最后把打包出来的代码，整合到一起的时候，冲突了。
-问题表现各自用 webpack 打包代码没有问题，但是加载到页面上时，代码报错且错误难以定位。
-解决方法在 webpack 的配置选项里使用 output.jsonpFunction。
-看一下文档里说的：
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>开门见山——</p>
+<h3 id="关于-Vue-的"><a href="#关于-Vue-的" class="headerlink" title="关于 Vue 的"></a>关于 Vue 的</h3><h4 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h4><p>我看的教材上，用的 vue-cli，以前的安装方式就是 <code>npm install -g vue-cli</code>，但是新版本变成了 <code>npm install -g @vue/cli</code>。</p>
+<p>其实<a href="https://cli.vuejs.org/guide/" target="_blank" rel="noopener">官方的文档</a>有说，但是我没有注意而已……老版本的 <code>vue-cli</code> 是 v2 版本，新版的 <code>@vue/cli</code> 是 v3 版本。</p>
+<h4 id="npm-run-dev-时遇到的警告提示"><a href="#npm-run-dev-时遇到的警告提示" class="headerlink" title="npm run dev 时遇到的警告提示"></a>npm run dev 时遇到的警告提示</h4><p>另一个问题是，使用 <code>vue init</code> 建立新项目之后，在命令行中运行 <code>npm run dev</code> 居然出了黄色的警告提示：<strong>There are multiple modules with names that only differ in casing.</strong> 比较迷的是，我头一天用的时候，是没有任何提示的，第二天回公司，重新运行，就出一大堆提示了。找了一堆资料，大概有两种原因：</p>
+<blockquote>
+<ul>
+<li>用 <code>import Vue from &#39;Vue&#39;</code> 这样的写法引用了模块，应该改成小写的：<code>import Vue from &#39;vue&#39;</code></li>
+<li>使用了会区分大小写的命令行，例如 git bash 或者 powershell</li>
+</ul>
+</blockquote>
+<p>我自己遇到的问题是第二种，头一天用的 cmd 命令行，第二天用的 powershell，所以就出问题了。有遇到相同问题的朋友，可以找找看，是不是这两个原因。</p>
+<h3 id="关于-node-的"><a href="#关于-node-的" class="headerlink" title="关于 node 的"></a>关于 node 的</h3><h4 id="安装-node-gyp"><a href="#安装-node-gyp" class="headerlink" title="安装 node-gyp"></a>安装 node-gyp</h4><p>下载了网上的一个测试 node 服务器，用里面的 <code>package.json</code> 文件，用 <code>npm install</code> 安装之后，不停报错。分析命令行提示，缺少 <code>node-gyp</code>。继续在网上找资料，<code>node-gyp</code> 是没有整合到 <code>nodejs</code> 的安装包里，需要自己编译安装。而要在 windows 平台上编译安装，又需要安装 <a href="https://github.com/felixrieseberg/windows-build-tools" target="_blank" rel="noopener"><code>windows-build-tools</code></a>。</p>
+<p>按项目说明来：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g --production windows-build-tools</span><br></pre></td></tr></table></figure>
+<p>然后，然后就特么一直卡在那里不动了……</p>
+<p>又找了一堆资料，好像是最新版本的这个工具有问题，安装 <code>4.0.0</code> 的就不会出错，那么再来：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g --production windows-build-tools@4.0.0</span><br></pre></td></tr></table></figure>
+<p>等待命令行窗口里面该搞的搞完了，就可以继续输入命令安装 <code>node-gyp</code> 了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g node-gyp</span><br></pre></td></tr></table></figure>
+<h4 id="安装-bcrypt"><a href="#安装-bcrypt" class="headerlink" title="安装 bcrypt"></a>安装 bcrypt</h4><p><code>bcrypt</code> 的安装需要依赖 <code>node-gyp</code>，所以上面才折腾半天的。但问题是，如果直接按下载的 <code>package.json</code> 提供的版本安装 <code>1.x.x</code> 版本时，会提示 github 上找不到……</p>
+<p>OK，还是安最新的吧。。。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install bcrypt</span><br></pre></td></tr></table></figure>
+<h4 id="不要忽略-package-lock-json-文件的影响"><a href="#不要忽略-package-lock-json-文件的影响" class="headerlink" title="不要忽略 package-lock.json 文件的影响"></a>不要忽略 package-lock.json 文件的影响</h4><p>前不久重装了一下系统，然后安装了一下需要用的工具。在我的工具文件夹里，使用 <code>npm install</code> 的时候，总是提示 <code>base64-url 安装错误，/path/to/base64-url.tar.gz 文件不存在</code>，而且这个 <code>path</code> 是一个本地路径，也是一个无法在 windows 系统里存在的路径。</p>
+<p>折腾半天无果，发现是被同目录下的 <code>package-lock.json</code> 影响了。因为之前从 <code>cnpm</code> 切换到 <code>npm</code> 时，生成的 <code>package-lock.json</code> 基于了当时安装好的 node 模块，所以路径指向了本地。</p>
+<p>我删掉 <code>package-lock.json</code> 之后再装新版本，就没这些问题了。当然，有些版本变化较大的工具，还是要卸载后安装对应的旧版，也挺糟心的。</p>
+<h4 id="一个好用的工具-nrm"><a href="#一个好用的工具-nrm" class="headerlink" title="一个好用的工具 nrm"></a>一个好用的工具 nrm</h4><p>什么是 nrm？</p>
+<blockquote>
+<p>nrm can help you easy and fast switch between different npm registries, now include: npm, cnpm, taobao, nj(nodejitsu).</p>
+</blockquote>
+<p>就是用来快速切换 npm 源的一个管理工具，里有 npm 原始源地址，也有淘宝和其他的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+<p>安装之后，直接在命令行里用 <code>nrm ls</code> 就可以显示已经有的源，和正在使用的源；用 <code>nrm use [name]</code> 就能切换到指定源了，例如 <code>nrm use taobao</code>。用 <code>nrm</code> 来完成这些小动作真的会省心不少，推荐。</p>
 
-output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方式按需加载代码块时。一个命名的 JSONP 函数用于异步加载代码块或者把多个初始化代码块合并到一起时使用（如 Comm...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/18</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/29/add-nginx-vhosts/" title= 为nginx配置vhosts（Windows开发环境） >
+                    <div class="prevTitle">为nginx配置vhosts（Windows开发环境）</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = "http://zhcexo.com/2019/03/08/node-bcrypt-and-vue-casing/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "最近尝试Vue遇到的坑：安装bcrypt和命令行大小写错误提示"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://zhcexosblog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     
-</div>
-                
-            </div>
-        </article>
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-    <!-- paginator  -->
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -425,6 +502,24 @@ output.jsonpFunctionstring仅用在输出目标为 web，且使用 jsonp 的方�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-Vue-的"><span class="toc-number">1.</span> <span class="toc-text">关于 Vue 的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-cli"><span class="toc-number">1.1.</span> <span class="toc-text">vue-cli</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#npm-run-dev-时遇到的警告提示"><span class="toc-number">1.2.</span> <span class="toc-text">npm run dev 时遇到的警告提示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-node-的"><span class="toc-number">2.</span> <span class="toc-text">关于 node 的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-node-gyp"><span class="toc-number">2.1.</span> <span class="toc-text">安装 node-gyp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-bcrypt"><span class="toc-number">2.2.</span> <span class="toc-text">安装 bcrypt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不要忽略-package-lock-json-文件的影响"><span class="toc-number">2.3.</span> <span class="toc-text">不要忽略 package-lock.json 文件的影响</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个好用的工具-nrm"><span class="toc-number">2.4.</span> <span class="toc-text">一个好用的工具 nrm</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -753,6 +848,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
