@@ -356,6 +356,37 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/03/15/cssnano-renames-css-keyframes/">
+            
+                <span>cssnano压缩了CSS动画中keyframes的名字</span>
+        </a>
+        <div class="abstract-content">
+            最近在迁移一些老代码，移动端有一个 loading 动画是用 CSS3 写的，正常得不得了。可是把它集成到 webpack 使用的 scss 里之后，动画效果就丢掉了。找到 scss 转换出来的 css，查找出问题的代码，发现里面的 @keyframes bouncedelay 变成了 @keyframes a，查看了一下 webpack 的配置文件，把问题原因锁定到 cssnano 上。
+首先是找到了 cssnano 的官网，配置项很多，感觉一个个看下来太浪费时间，直接就找问题本身。于是乎在 github 上找到了一个 issue，按别人提供的方法，果然解决了问题。
+修改 webpac...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/03/15</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="css">css</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2018/08/15/a-complete-guide-to-grid/">
             
                 <span>Grid 布局完全指南</span>
@@ -646,9 +677,20 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 14
+        Total : 15
         </div>
         <!-- search  -->
         
@@ -661,6 +703,11 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/15</span><a class="archive-post-title" href="/2019/03/15/cssnano-renames-css-keyframes/">cssnano压缩了CSS动画中keyframes的名字</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -748,11 +795,15 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
     
         <span class="sidebar-tag-name" data-tags="server"><span class="iconfont-archer">&#xe606;</span>server</span>
     
-        <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+        <span class="sidebar-tag-name" data-tags="css"><span class="iconfont-archer">&#xe606;</span>css</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
     
         <span class="sidebar-tag-name" data-tags="javascript"><span class="iconfont-archer">&#xe606;</span>javascript</span>
     
-        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+        <span class="sidebar-tag-name" data-tags="go"><span class="iconfont-archer">&#xe606;</span>go</span>
+    
+        <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
     
         <span class="sidebar-tag-name" data-tags="webpack"><span class="iconfont-archer">&#xe606;</span>webpack</span>
     
@@ -761,10 +812,6 @@ Flex 布局的主要思想是让容器能够改变里面项目的宽度/高度(�
         <span class="sidebar-tag-name" data-tags="vue"><span class="iconfont-archer">&#xe606;</span>vue</span>
     
         <span class="sidebar-tag-name" data-tags="powershell"><span class="iconfont-archer">&#xe606;</span>powershell</span>
-    
-        <span class="sidebar-tag-name" data-tags="Tools"><span class="iconfont-archer">&#xe606;</span>Tools</span>
-    
-        <span class="sidebar-tag-name" data-tags="css"><span class="iconfont-archer">&#xe606;</span>css</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
