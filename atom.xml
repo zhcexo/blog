@@ -18,8 +18,8 @@
   
   <entry>
     <title>学习Vuex源码前的准备——数组的扩展运算符</title>
-    <link href="http://zhcexo.com/2019/03/20/destructuring/"/>
-    <id>http://zhcexo.com/2019/03/20/destructuring/</id>
+    <link href="http://zhcexo.com/2019/03/20/spread-syntax/"/>
+    <id>http://zhcexo.com/2019/03/20/spread-syntax/</id>
     <published>2019-03-20T05:55:39.000Z</published>
     <updated>2019-03-20T07:31:37.639Z</updated>
     
